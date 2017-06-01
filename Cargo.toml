@@ -1,0 +1,14 @@
+[package]
+name = "sdl2-test"
+version = "0.1.0"
+authors = ["bombless"]
+
+[dependencies.sdl2]
+version = "*"
+features = ["ttf"]
+
+[dependencies.svg]
+path = "../svg"
+
+[dependencies.svg-now]
+path = "../svg-now"
