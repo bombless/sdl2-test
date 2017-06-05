@@ -72,6 +72,9 @@ fn render(canvas: &mut Canvas<Window>, render_text: bool) {
 		        <line x1="15" y1="0" x2="15" y2="30" stroke-width="2" stroke="black"/>
 	        </svg>
             "#,
+            r#"<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+		        <text x="15" y="15" font-family="Verdana" text-anchor="middle" alignment-baseline="middle" font-size="15">&#x1f47b;</text>
+	        </svg>"#,
     ];
     for (idx, src) in DATA.iter().enumerate() {
         let svg_content = svg::parse(src).unwrap();
@@ -81,9 +84,10 @@ fn render(canvas: &mut Canvas<Window>, render_text: bool) {
             for y in 0..256 {
                 for x in 0..256 {
                     let offset = y*pitch + x*3;
-                    buffer[offset] = svg_rendered[(x * 256 + y) * 4];
-                    buffer[offset + 1] = svg_rendered[(x * 256 + y) * 4 + 1];
-                    buffer[offset + 2] = svg_rendered[(x * 256 + y) * 4 + 2];
+                    assert_eq!(pitch, 256 * 3);
+                    buffer[offset] = svg_rendered[(x + y * 256) * 4];
+                    buffer[offset + 1] = svg_rendered[(x + y * 256) * 4 + 1];
+                    buffer[offset + 2] = svg_rendered[(x + y * 256) * 4 + 2];
                 }
             }
         }).unwrap();
