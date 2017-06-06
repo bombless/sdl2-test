@@ -72,9 +72,20 @@ fn render(canvas: &mut Canvas<Window>, render_text: bool) {
 		        <line x1="15" y1="0" x2="15" y2="30" stroke-width="2" stroke="black"/>
 	        </svg>
             "#,
-            r#"<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+            r#"
+            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
 		        <text x="15" y="15" font-family="Verdana" text-anchor="middle" alignment-baseline="middle" font-size="15">&#x1f47b;</text>
-	        </svg>"#,
+	        </svg>"#,            
+            r#"
+            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+		        <circle fill="black" cx="15" cy="15" r="5"/>
+	        </svg>
+            "#,
+            r#"
+            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+		        <circle cx="15" cy="15" r="5" fill="yellow" />
+	        </svg>
+            "#,
     ];
     for (idx, src) in DATA.iter().enumerate() {
         let svg_content = svg::parse(src).unwrap();
@@ -92,13 +103,13 @@ fn render(canvas: &mut Canvas<Window>, render_text: bool) {
             }
         }).unwrap();
         
-        canvas.copy(&texture, None, Some(Rect::new(10 + idx as i32 / 3 * 200, 10 + idx as i32 % 3 * 200, 180, 180))).unwrap();
+        canvas.copy(&texture, None, Some(Rect::new(10 + idx as i32 / 4 * 200, 10 + idx as i32 % 4 * 200, 180, 180))).unwrap();
         
         if render_text {
             let surface = font.render(&format!("{}", idx)).blended(Color::RGBA(255, 0, 0, 255)).unwrap();
             let texture = texture_creator.create_texture_from_surface(&surface).unwrap();
 
-            canvas.copy(&texture, None, Some(Rect::new(10 + idx as i32 / 3 * 200, 10 + idx as i32 % 3 * 200, 180, 180))).unwrap();
+            canvas.copy(&texture, None, Some(Rect::new(10 + idx as i32 / 4 * 200, 10 + idx as i32 % 4 * 200, 180, 180))).unwrap();
         }
 
     }
@@ -108,7 +119,7 @@ pub fn main() {
     let sdl_context = sdl2::init().unwrap();
     let video_subsystem = sdl_context.video().unwrap();
 
-    let window = video_subsystem.window("rust-sdl2 demo: Video", 800, 600)
+    let window = video_subsystem.window("rust-sdl2 demo: Video", 800, 800)
         .position_centered()
         .opengl()
         .build()

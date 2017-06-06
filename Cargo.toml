@@ -9,6 +9,8 @@ features = ["ttf"]
 
 [dependencies.svg]
 path = "../svg"
+version = "0.4"
 
 [dependencies.svg-now]
 path = "../svg-now"
+version = "0.4"

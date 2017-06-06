@@ -3,7 +3,7 @@ name = "sdl2-test"
 version = "0.1.0"
 dependencies = [
  "sdl2 0.30.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "svg 0.2.0",
+ "svg 0.4.0",
  "svg-now 0.2.0",
 ]
 
@@ -156,7 +156,7 @@ dependencies = [
 
 [[package]]
 name = "svg"
-version = "0.2.0"
+version = "0.4.0"
 dependencies = [
  "svgparser 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -167,7 +167,7 @@ version = "0.2.0"
 dependencies = [
  "rusttype 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "sdl2 0.30.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "svg 0.2.0",
+ "svg 0.4.0",
 ]
 
 [[package]]
