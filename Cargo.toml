@@ -13,4 +13,4 @@ version = "0.4"
 
 [dependencies.svg-now]
 path = "../svg-now"
-version = "0.4"
+version = "0.3"
